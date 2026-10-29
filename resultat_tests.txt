@@ -1,0 +1,108 @@
+make: Entering directory '/home/vagrant/tn/firmware'
+test/test_convert.c:37:test_EF02_adc_0_gives_minus_50_00:PASS
+test/test_convert.c:38:test_EF02_adc_2048_gives_115_00:PASS
+test/test_convert.c:39:test_EF02_adc_931_gives_25_00:PASS
+test/test_convert.c:40:test_EF02_adc_4095_is_out_of_physical_range:PASS
+test/test_convert.c:41:test_EI01_EF02_adc_4096_is_invalid_code:PASS
+test/test_convert.c:42:test_EI01_EF02_adc_65535_is_invalid_code:PASS
+test/test_convert.c:43:test_EF05_adc_124_is_below_minus_40:PASS
+test/test_convert.c:44:test_EF05_adc_125_is_valid_lower_bound:PASS
+test/test_convert.c:45:test_EF05_adc_2172_is_valid_upper_bound:PASS
+test/test_convert.c:46:test_EF05_adc_2173_is_above_125:PASS
+test/test_convert.c:47:test_EF05_range_check_bounds:PASS
+
+-----------------------
+11 Tests 0 Failures 0 Ignored 
+OK
+test/test_fault.c:40:test_EF05_MCDC_T1_all_false_no_fault:PASS
+test/test_fault.c:41:test_EF05_MCDC_T2_A_true:PASS
+test/test_fault.c:42:test_EF05_MCDC_T3_B_true:PASS
+test/test_fault.c:43:test_EF05_MCDC_T4_C_true_frozen_five:PASS
+test/test_fault.c:44:test_EF05_four_identical_then_different_is_not_frozen:PASS
+test/test_fault.c:45:test_EF05_recovery_after_five_valid:PASS
+test/test_fault.c:46:test_EF05_invalid_in_recovery_resets_run:PASS
+test/test_fault.c:47:test_EF05_invalid_adc_code_is_fault:PASS
+
+-----------------------
+8 Tests 0 Failures 0 Ignored 
+OK
+test/test_filter.c:42:test_EF03_steady_state_five_identical:PASS
+test/test_filter.c:43:test_EF03_transient_partial_window:PASS
+test/test_filter.c:44:test_EF03_sliding_drops_oldest_after_six:PASS
+test/test_filter.c:45:test_EF03_invalid_sample_is_excluded:PASS
+test/test_filter.c:46:test_EF03_isolated_spike_stays_below_threshold:PASS
+test/test_filter.c:47:test_EF03_empty_filter_returns_zero:PASS
+
+-----------------------
+6 Tests 0 Failures 0 Ignored 
+OK
+test/test_frame.c:73:test_EI02_crc_check_value_123456789_is_29B1:PASS
+test/test_frame.c:74:test_EI02_crc_of_empty_is_FFFF:PASS
+test/test_frame.c:75:test_EI02_crc_changes_when_one_byte_changes:PASS
+test/test_frame.c:76:test_EI02_frame_has_all_fields_and_valid_crc:PASS
+test/test_frame.c:77:test_EI02_negative_temperature_is_formatted:PASS
+test/test_frame.c:78:test_EI02_corrupted_frame_fails_crc:PASS
+test/test_frame.c:79:test_EI02_frame_build_returns_0_on_small_buffer_without_overflow:PASS
+test/test_frame.c:80:test_EI02_crc_ok_rejects_frame_without_crc_member:PASS
+test/test_frame.c:81:test_EI02_crc_ok_rejects_truncated_crc:PASS
+test/test_frame.c:82:test_EI03_json_get_str_rejects_unterminated_and_too_long:PASS
+test/test_frame.c:83:test_EI03_json_helpers:PASS
+
+-----------------------
+11 Tests 0 Failures 0 Ignored 
+OK
+test/test_node.c:177:test_INIT_goes_to_NORMAL_on_first_step:PASS
+test/test_node.c:178:test_EF04_no_alert_before_three_filtered_above:PASS
+test/test_node.c:179:test_EF04_alert_after_three_filtered_above_single_frame:PASS
+test/test_node.c:180:test_EF04_no_second_alert_frame_while_alert:PASS
+test/test_node.c:181:test_EF04_alert_cleared_below_hysteresis_with_end_frame:PASS
+test/test_node.c:182:test_EF04_alert_kept_at_hysteresis_bound:PASS
+test/test_node.c:183:test_ENF01_alert_frame_within_2s_of_third_filtered_sample:PASS
+test/test_node.c:184:test_EF05_out_of_range_enters_fault_with_frame:PASS
+test/test_node.c:185:test_EF05_frozen_sensor_enters_fault:PASS
+test/test_node.c:76:test_EF05_recovers_to_normal_after_5_valid_samples:FAIL: Expected 1 Was 3
+test/test_node.c:187:test_EF05_spike_isolated_is_fault_not_alert:PASS
+test/test_node.c:188:test_EF06_periodic_data_frame_every_10s:PASS
+test/test_node.c:189:test_ENF05_frames_buffered_and_resent_in_order_after_outage:PASS
+test/test_node.c:190:test_ENF05_buffer_kept_while_still_disconnected:PASS
+test/test_node.c:191:test_EF07_command_set_threshold_ok_and_ack:PASS
+test/test_node.c:192:test_EF07_command_out_of_range_is_nacked:PASS
+test/test_node.c:193:test_EF07_command_bad_crc_is_ignored_silently:PASS
+test/test_node.c:194:test_EF08_set_period_changes_acquisition_period:PASS
+test/test_node.c:195:test_EF08_set_period_out_of_range_is_nacked:PASS
+test/test_node.c:196:test_EI03_unknown_command_is_nacked_unknown:PASS
+test/test_node.c:197:test_EI03_command_without_cmd_is_nacked_format:PASS
+test/test_node.c:198:test_EI03_command_without_value_is_nacked_format:PASS
+test/test_node.c:199:test_no_command_pending_does_nothing:PASS
+test/test_node.c:200:test_EF01_default_acquisition_period_is_1000ms:PASS
+test/test_node.c:201:test_watchdog_kicked_each_step:PASS
+test/test_node.c:172:test_EF04_alert_after_three_above:FAIL: Expected 2 Was 1
+
+-----------------------
+26 Tests 2 Failures 0 Ignored 
+FAIL
+test/test_ringbuf.c:39:test_ENF05_empty_pop_returns_false:PASS
+test/test_ringbuf.c:40:test_ENF05_one_push_one_pop:PASS
+test/test_ringbuf.c:41:test_ENF05_59_and_60_fit:PASS
+test/test_ringbuf.c:42:test_ENF05_push_61_keeps_60_and_drops_oldest:PASS
+test/test_ringbuf.c:43:test_ENF05_fifo_order_on_drain:PASS
+test/test_ringbuf.c:44:test_ENF05_peek_does_not_remove:PASS
+
+-----------------------
+6 Tests 0 Failures 0 Ignored 
+OK
+test/test_threshold.c:41:test_EF04_two_above_is_not_enough:PASS
+test/test_threshold.c:42:test_EF04_three_consecutive_above_raise:PASS
+test/test_threshold.c:43:test_EF04_exactly_6000_does_not_count:PASS
+test/test_threshold.c:44:test_EF04_6001_counts:PASS
+test/test_threshold.c:45:test_EF04_counter_resets_below_threshold:PASS
+test/test_threshold.c:46:test_EF04_clear_below_hysteresis:PASS
+test/test_threshold.c:47:test_EF04_at_hysteresis_bound_stays_alert:PASS
+test/test_threshold.c:48:test_EF04_configured_hysteresis_is_used:PASS
+test/test_threshold.c:49:test_EF07_set_checked_bounds:PASS
+
+-----------------------
+9 Tests 0 Failures 0 Ignored 
+OK
+make: *** [Makefile:26: test] Error 1
+make: Leaving directory '/home/vagrant/tn/firmware'

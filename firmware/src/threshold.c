@@ -32,12 +32,14 @@ thr_event_t threshold_step(int32_t filtered_centi, bool alert_active)
             ev = THR_CLEAR;
             above = 0u;
         }
-    } else {
+        } else {
         if (filtered_centi > high_centi) {
             above++;
             if (above >= THR_CONSECUTIVE) {
                 ev = THR_RAISE;
             }
+        } else {
+            above = 0u;
         }
     }
     return ev;
