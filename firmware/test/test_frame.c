@@ -19,8 +19,7 @@ void test_EI02_frame_has_all_fields_and_valid_crc(void)
     size_t n = frame_build(buf, sizeof buf, &f); 
     TEST_ASSERT_GREATER_THAN_size_t(0, n); 
     
-TEST_ASSERT_EQUAL_STRING_LEN("{\"id\":\"TN01\",\"seq\":12,\"t\":1700000000,\"temp\":25.50,\"state\":\"NORMAL\",\"c
-rc\":\"", (const char *)buf, 66); 
+TEST_ASSERT_EQUAL_STRING_LEN("{\"id\":\"TN01\",\"seq\":12,\"t\":1700000000,\"temp\":25.50,\"state\":\"NORMAL\",\"crc\":\"", (const char *)buf, 66); 
     TEST_ASSERT_TRUE(frame_crc_ok(buf, n)); 
 } 
 void test_EI02_negative_temperature_is_formatted(void)      /* -3,25 °C */ 
